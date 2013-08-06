@@ -126,9 +126,8 @@ def disconnect(request):
     if request.method == 'POST':
         messages.info(
             request, _("You have disconnected your Facebook profile."))
-        profile = request.user.get_profile()
-        profile.disconnect_facebook()
-        profile.save()
+        request.user.disconnect_facebook()
+        request.user.save()
     response = next_redirect(request)
     return response
 
