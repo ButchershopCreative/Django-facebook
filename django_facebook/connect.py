@@ -131,9 +131,9 @@ def _connect_user(request, facebook, overwrite=True):
     facebook_id = data['id']
 
     # see if we already have profiles connected to this Facebook account
-    old_connections = _get_old_connections(facebook_id, request.user.id)[:20]
-    if old_connections and not request.REQUEST.get('confirm_connect'):
-        raise facebook_exceptions.AlreadyConnectedError(list(old_connections))
+    # old_connections = _get_old_connections(facebook_id, request.user.id)[:20]
+    # if old_connections and not request.REQUEST.get('confirm_connect'):
+    #     raise facebook_exceptions.AlreadyConnectedError(list(old_connections))
     user = _update_user(request.user, facebook, overwrite=overwrite)
 
     return user
